@@ -1,4 +1,3 @@
-import React from 'react';
 import {NativeModules, PermissionsAndroid} from 'react-native';
 var DirectSms = NativeModules.DirectSms;
 

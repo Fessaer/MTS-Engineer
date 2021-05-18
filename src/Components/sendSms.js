@@ -1,6 +1,5 @@
 import SendSMS from 'react-native-sms';
 // import SendSMS from 'react-native-sms-x';
-import {ToastAndroid} from 'react-native';
 
 const sendSMS = textInput => {
   console.log('sendSMS');

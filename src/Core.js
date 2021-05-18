@@ -291,7 +291,6 @@ const Test = () => {
     const {data} = inState;
     return (
       <View
-        // eslint-disable-next-line react-native/no-inline-styles
         style={{
           width: '100%',
           flex: 1,

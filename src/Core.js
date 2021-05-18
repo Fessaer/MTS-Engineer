@@ -46,7 +46,7 @@ const Test = () => {
           //TARGET MSK
           const resultMsk = () => {
             try {
-              const msk = targetText.body.match(/MSK0000\S+/g)[0];
+              const msk = targetText.body.match(/MSK0000\d+/g)[0];
               return msk.replace(/\.$/, '');
             } catch (err) {
               return 'Data Undefined';
@@ -69,7 +69,7 @@ const Test = () => {
           //STATUS
           const resultStatus = () => {
             try {
-              let statusTarget = targetText.body.match(/Статус \S+/g)[0];
+              let statusTarget = targetText.body.match(/Статус\W\S+/g)[0];
               let status = statusTarget.replace(/"/g, '').slice(7);
               return status;
             } catch (err) {
@@ -277,10 +277,11 @@ const Test = () => {
         <TouchableOpacity
           onPress={() => navigation.navigate('Details', func(item))}
           style={({width: '100%'}, buttonStyle)}>
-          <Text
-            style={
-              styleButtons.appButtonText
-            }>{`Номер: ${item.number} Категория ${item.cat}`}</Text>
+          <Text style={styleButtons.appButtonText}>{`Номер: ${
+            item.number
+          } Категория ${
+            item.cat === 'Data Undefined' ? '...' : item.cat
+          }`}</Text>
           <Text style={{alignSelf: 'center'}}>
             {item.text.match(/г. Пермь\S+\W+\d+/)}
           </Text>
@@ -296,6 +297,7 @@ const Test = () => {
           flex: 1,
           justifyContent: 'center',
           backgroundColor: 'powderblue',
+          paddingHorizontal: 3,
         }}>
         <UpdateDataButton />
         <FlatList
